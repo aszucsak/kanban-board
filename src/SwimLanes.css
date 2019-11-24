@@ -1,0 +1,10 @@
+.SwimLanes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  flex-grow: 1;
+  padding: 1rem;
+  border-radius: 20px;
+  background: rgba(50, 100, 50, 0.8);
+}

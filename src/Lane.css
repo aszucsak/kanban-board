@@ -1,0 +1,36 @@
+.Lane {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid grey;
+  width: 100%;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(215, 215, 215, 0.8);
+  border-radius: 7px;
+}
+
+.Lane span {
+  background-color: #ffffffee;
+  margin-bottom: 0.5em;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+span.add-item {
+  background-color: #ffffff77;
+}
+
+.Lane h3 {
+  margin: 0.5rem 0;
+}
+
+.Lane.empty {
+  opacity: 0.6;
+}
+
+.lane-container {
+  box-sizing: border-box;
+  padding: 0 1rem;
+  flex-basis: calc(100% / 5);
+}
