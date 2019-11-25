@@ -4,6 +4,7 @@ import SwimLanes from "./SwimLanes";
 import { board } from "./seed";
 
 export default function Board() {
+  // to be rewritten using useBoardState hook
   const [kanbanBoard, setBoard] = useState(board);
   const { title, lanes } = kanbanBoard;
   return (

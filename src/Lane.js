@@ -1,5 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./Lane.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faPlusCircle,
+  faPlusSquare,
+  faEdit,
+  faTrash
+} from "@fortawesome/free-solid-svg-icons";
 
 function Lane({ lane }) {
   const { title, items } = lane;
@@ -7,11 +15,19 @@ function Lane({ lane }) {
   return (
     <div className="lane-container">
       <div className={`Lane ${empty ? "empty" : ""}`}>
-        <h3>{title}</h3>
+        <h3>
+          {empty && <FontAwesomeIcon icon={faPlusCircle} />}
+          <span>{title}</span>
+        </h3>
         {items.map(item => (
-          <span>{item.name}</span>
+          <span key={item.id}>{item.name}</span>
         ))}
-        {!empty && <span className="add-item">Add item</span>}
+        {!empty && (
+          <span className="add-item">
+            <FontAwesomeIcon icon={faPlus} />
+            <span className="add-item-text">Add item</span>
+          </span>
+        )}
       </div>
     </div>
   );

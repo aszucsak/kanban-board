@@ -4,7 +4,7 @@ import "./SwimLanes.css";
 
 export default function SwimLanes({ lanes }) {
   return (
-    <div class="SwimLanes">
+    <div className="SwimLanes">
       {lanes.map(lane => (
         <Lane lane={lane} key={lane.id} />
       ))}

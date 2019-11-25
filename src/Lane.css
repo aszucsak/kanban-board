@@ -10,15 +10,23 @@
   border-radius: 7px;
 }
 
-.Lane span {
+.Lane > span {
   background-color: #ffffffee;
   margin-bottom: 0.5em;
   padding: 0.5rem 1rem;
   border-radius: 3px;
+  box-shadow: 1px 1px 2px 0px rgba(133, 133, 133, 1);
 }
 
 span.add-item {
-  background-color: #ffffff77;
+  /* background-color: #ffffff77; */
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+span.add-item:hover {
+  opacity: 0.8;
 }
 
 .Lane h3 {
@@ -27,10 +35,24 @@ span.add-item {
 
 .Lane.empty {
   opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+.Lane.empty span {
+  margin-left: 10px;
+}
+
+.Lane.empty:hover {
+  opacity: 1;
 }
 
 .lane-container {
   box-sizing: border-box;
   padding: 0 1rem;
   flex-basis: calc(100% / 5);
+}
+
+.add-item-text {
+  margin-left: 10px;
 }
