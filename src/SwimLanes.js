@@ -2,11 +2,11 @@ import React from "react";
 import Lane from "./Lane";
 import "./SwimLanes.css";
 
-export default function SwimLanes({ lanes, addLane }) {
+export default function SwimLanes({ lanes, addLane, addItem }) {
   return (
     <div className="SwimLanes">
       {lanes.map(lane => (
-        <Lane lane={lane} key={lane.id} />
+        <Lane lane={lane} key={lane.id} addItem={addItem} />
       ))}
       <Lane
         lane={{ title: "Add lane", items: [] }}

@@ -32,7 +32,7 @@ export default () => {
         description: itemDescription
       };
       const updatedLanes = kanban.lanes.map(lane =>
-        lane.Id === laneId ? { ...lane, items: [...lane.items, newItem] } : lane
+        lane.id === laneId ? { ...lane, items: [...lane.items, newItem] } : lane
       );
       updateLanes(updatedLanes);
     },
