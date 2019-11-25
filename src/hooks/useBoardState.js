@@ -2,24 +2,18 @@ import { useState } from "react";
 import uuid from "../utils/uuid";
 import { board } from "../seed";
 
-export default initialBoard => {
+export default () => {
   const [kanban, setKanban] = useState(board);
   const updateLanes = updatedLanes =>
     setKanban({ ...kanban, lanes: updatedLanes });
   return {
     kanban,
     addLane: newTitle => {
-      setKanban({
-        ...kanban,
-        lanes: [
-          ...kanban.lanes,
-          {
-            id: uuid(),
-            title: newTitle,
-            items: []
-          }
-        ]
-      });
+      const updatedLanes = [
+        ...kanban.lanes,
+        { id: uuid(), title: newTitle, items: [] }
+      ];
+      updateLanes(updatedLanes);
     },
     removeLane: laneId => {
       const updatedLanes = kanban.lanes.filter(lane => lane.id !== laneId);
@@ -29,7 +23,7 @@ export default initialBoard => {
       const updatedLanes = kanban.lanes.map(lane =>
         lane.id === laneId ? { ...lane, title: newTitle } : lane
       );
-      setKanban({ ...kanban, lanes: updatedLanes });
+      updateLanes(updatedLanes);
     },
     addItem: (laneId, itemName, itemDescription) => {
       const newItem = {

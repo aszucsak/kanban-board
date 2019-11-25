@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Board.css";
 import SwimLanes from "./SwimLanes";
-import { board } from "./seed";
+import useBoardState from "./hooks/useBoardState";
 
 export default function Board() {
   // to be rewritten using useBoardState hook
-  const [kanbanBoard, setBoard] = useState(board);
-  const { title, lanes } = kanbanBoard;
+  const { kanban, addLane } = useBoardState();
+  const { title, lanes } = kanban;
   return (
     <div className="Board">
       <h1>{title}</h1>
-      <SwimLanes lanes={lanes} />
+      <SwimLanes lanes={lanes} addLane={addLane} />
     </div>
   );
 }

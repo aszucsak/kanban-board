@@ -9,14 +9,19 @@ import {
   // faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
-function Lane({ lane }) {
+function Lane({ lane, addLane }) {
   const { title, items } = lane;
   const empty = items.length === 0;
+  // need to change logic -> new lane will also be empty
+  // condition: new lane placeholder
+  const handleClick = () => addLane("new lane");
   return (
     <div className="lane-container">
       <div className={`Lane ${empty ? "empty" : ""}`}>
         <h3>
-          {empty && <FontAwesomeIcon icon={faPlusCircle} />}
+          {empty && (
+            <FontAwesomeIcon icon={faPlusCircle} onClick={handleClick} />
+          )}
           <span>{title}</span>
         </h3>
         {items.map(item => (
