@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./Lane.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  faPlusCircle,
-  faPlusSquare,
-  faEdit,
-  faTrash
+  faPlusCircle
+  // faPlusSquare,
+  // faEdit,
+  // faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
 function Lane({ lane }) {

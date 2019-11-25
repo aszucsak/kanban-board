@@ -7,29 +7,29 @@ export default function Navbar() {
     <div className="Navbar">
       <ul className="Navbar-menu">
         <li id="logo">
-          <a href="#">
+          <button>
             <img src={logo} alt="logo" height="30" />
-          </a>
+          </button>
         </li>
         <li>
-          <a href="#">Menu1</a>
+          <button>Menu1</button>
         </li>
         <li>
-          <a href="#">Menu2</a>
+          <button>Menu2</button>
         </li>
       </ul>
       <ul className="Navbar-menu">
         <li>
-          <a href="#">Login</a>
+          <button>Login</button>
         </li>
         <li>
-          <a href="#">Register</a>
+          <button>Register</button>
         </li>
         <li>
-          <a href="#">Account</a>
+          <button>Account</button>
         </li>
         <li>
-          <a href="#">Logout</a>
+          <button>Logout</button>
         </li>
       </ul>
     </div>
