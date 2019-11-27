@@ -3,19 +3,20 @@ import "./Lane.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
-  faPlusCircle
+  faPlusCircle,
   // faPlusSquare,
   // faEdit,
-  // faTrash
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
-function Lane({ lane, addLane, addItem }) {
+function Lane({ lane, addLane, addItem, removeLane }) {
   const { title, items } = lane;
-  // need to change logic -> new lane will also be empty
-  // condition: new lane placeholder
   const handleClick = () => (addLane ? addLane("new lane") : null);
   const handleAddItem = e => {
     addItem(lane.id, "new item", "new description");
+  };
+  const handleRemoveLane = () => {
+    removeLane(lane.id);
   };
   return (
     <div className="lane-container">
@@ -23,6 +24,9 @@ function Lane({ lane, addLane, addItem }) {
         <h3>
           {addLane && <FontAwesomeIcon icon={faPlusCircle} />}
           <span>{title}</span>
+          {!addLane && (
+            <FontAwesomeIcon icon={faTrash} onClick={handleRemoveLane} />
+          )}
         </h3>
         {items.map(item => (
           <span key={item.id}>{item.name}</span>

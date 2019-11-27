@@ -8,6 +8,7 @@ export default () => {
     setKanban({ ...kanban, lanes: updatedLanes });
   return {
     kanban,
+    editBoardName: title => setKanban({ ...kanban, title }),
     addLane: newTitle => {
       const updatedLanes = [
         ...kanban.lanes,

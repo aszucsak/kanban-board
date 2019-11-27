@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Board.css";
 import SwimLanes from "./SwimLanes";
 import useBoardState from "./hooks/useBoardState";
+import BoardTitleForm from "./BoardTitleForm";
 
 export default function Board() {
+  const [isEditing, setIsEditing] = useState(false);
   // rewritten using useBoardState hook
-  const { kanban, addLane, addItem } = useBoardState();
+  const {
+    kanban,
+    addLane,
+    addItem,
+    removeLane,
+    editBoardName
+  } = useBoardState();
   const { title, lanes } = kanban;
+  const toggleEdit = () => setIsEditing(!isEditing);
   return (
     <div className="Board">
-      <h1>{title}</h1>
-      <SwimLanes lanes={lanes} addLane={addLane} addItem={addItem} />
+      <div className="board-title">
+        {isEditing ? (
+          <BoardTitleForm
+            editBoardName={editBoardName}
+            toggleEdit={toggleEdit}
+            title={title}
+          />
+        ) : (
+          <h1 onClick={toggleEdit}>{title}</h1>
+        )}
+      </div>
+      <SwimLanes
+        lanes={lanes}
+        addLane={addLane}
+        addItem={addItem}
+        removeLane={removeLane}
+      />
     </div>
   );
 }
