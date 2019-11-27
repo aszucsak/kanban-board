@@ -26,7 +26,7 @@ function BoardTitleForm({ title, editBoardName, toggleEdit }) {
         autoFocus
       />
       <button type="submit">
-        <FontAwesomeIcon icon={faCheck} />
+        <FontAwesomeIcon icon={faCheck} size="2x" />
       </button>
     </form>
   );
