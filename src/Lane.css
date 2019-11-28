@@ -36,12 +36,52 @@ span.add-item:hover {
 
 .Lane h3 {
   margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  border: 2px solid transparent;
+  padding: 0.4rem 0;
+}
+
+#lane-title-form {
+  display: flex;
+  background-color: white;
+  border: 2px solid rgb(132, 200, 255);
+  width: 100%;
+  border-radius: 3px;
+  margin: 0.4rem 0;
+}
+
+#lane-title-form input {
+  font-size: 1.2rem;
+  flex-grow: 1;
+  margin: 0.5rem 0;
+  border: none;
+  background-color: transparent;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  padding: 0;
+  width: 100%;
+}
+
+#lane-title-form input:focus {
+  outline-width: 0;
+}
+
+#lane-title-form button {
+  background-color: rgba(128, 128, 128, 0.3);
+  border: none;
+  padding: 0.4rem;
 }
 
 .Lane.empty {
   opacity: 0.6;
   cursor: pointer;
   transition: opacity 300ms ease-in-out;
+}
+
+.Lane.empty h3 {
+  justify-content: flex-start;
 }
 
 .Lane.empty span {

@@ -12,7 +12,8 @@ export default function Board() {
     addLane,
     addItem,
     removeLane,
-    editBoardName
+    editBoardName,
+    editLaneTitle
   } = useBoardState();
   const { title, lanes } = kanban;
   const toggleEdit = () => setIsEditing(!isEditing);
@@ -33,6 +34,7 @@ export default function Board() {
         lanes={lanes}
         addLane={addLane}
         addItem={addItem}
+        editLaneTitle={editLaneTitle}
         removeLane={removeLane}
       />
     </div>

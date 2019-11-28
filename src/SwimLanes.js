@@ -2,7 +2,13 @@ import React from "react";
 import Lane from "./Lane";
 import "./SwimLanes.css";
 
-export default function SwimLanes({ lanes, addLane, addItem, removeLane }) {
+export default function SwimLanes({
+  lanes,
+  addLane,
+  addItem,
+  removeLane,
+  editLaneTitle
+}) {
   return (
     <div className="SwimLanes">
       {lanes.map(lane => (
@@ -11,6 +17,7 @@ export default function SwimLanes({ lanes, addLane, addItem, removeLane }) {
           key={lane.id}
           addItem={addItem}
           removeLane={removeLane}
+          editLaneTitle={editLaneTitle}
         />
       ))}
       <Lane
