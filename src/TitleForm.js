@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-function LaneTitleForm({ title, editLaneTitle, toggleEdit }) {
+function TitleForm({ title, editTitle, toggleEdit, laneId }) {
   const [value, setValue] = useState(title);
   const handleTitleEdit = e => {
     e.preventDefault();
-    editLaneTitle(value);
+    if (laneId) {
+      editTitle(laneId, value);
+    } else {
+      editTitle(value);
+    }
     toggleEdit();
   };
   const handleChange = e => {
@@ -17,7 +19,7 @@ function LaneTitleForm({ title, editLaneTitle, toggleEdit }) {
     toggleEdit();
   };
   return (
-    <form id="lane-title-form" onSubmit={handleTitleEdit}>
+    <form onSubmit={handleTitleEdit}>
       <input
         type="text"
         autoFocus
@@ -25,11 +27,8 @@ function LaneTitleForm({ title, editLaneTitle, toggleEdit }) {
         onBlur={handleCancel}
         onChange={handleChange}
       />
-      <button type="submit">
-        <FontAwesomeIcon icon={faCheck} size="2x" />
-      </button>
     </form>
   );
 }
 
-export default LaneTitleForm;
+export default TitleForm;

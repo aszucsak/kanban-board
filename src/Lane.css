@@ -43,7 +43,7 @@ span.add-item:hover {
   padding: 0.4rem 0;
 }
 
-#lane-title-form {
+.Lane form {
   display: flex;
   background-color: white;
   border: 2px solid rgb(132, 200, 255);
@@ -52,7 +52,7 @@ span.add-item:hover {
   margin: 0.4rem 0;
 }
 
-#lane-title-form input {
+.Lane form input {
   font-size: 1.2rem;
   flex-grow: 1;
   margin: 0.5rem 0;
@@ -64,11 +64,15 @@ span.add-item:hover {
   width: 100%;
 }
 
-#lane-title-form input:focus {
+.Lane form input:focus {
   outline-width: 0;
 }
 
-#lane-title-form button {
+.Lane form input::-ms-clear {
+  display: none;
+}
+
+.Lane form button {
   background-color: rgba(128, 128, 128, 0.3);
   border: none;
   padding: 0.4rem;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Board.css";
 import SwimLanes from "./SwimLanes";
 import useBoardState from "./hooks/useBoardState";
-import BoardTitleForm from "./BoardTitleForm";
+import TitleForm from "./TitleForm";
 
 export default function Board() {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,8 +21,8 @@ export default function Board() {
     <div className="Board">
       <div className="board-title">
         {isEditing ? (
-          <BoardTitleForm
-            editBoardName={editBoardName}
+          <TitleForm
+            editTitle={editBoardName}
             toggleEdit={toggleEdit}
             title={title}
           />

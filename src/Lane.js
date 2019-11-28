@@ -8,7 +8,7 @@ import {
   // faEdit,
   faTrash
 } from "@fortawesome/free-solid-svg-icons";
-import LaneTitleForm from "./LaneTitleForm";
+import TitleForm from "./TitleForm";
 
 function Lane({ lane, addLane, addItem, removeLane, editLaneTitle }) {
   const { title, items } = lane;
@@ -29,10 +29,11 @@ function Lane({ lane, addLane, addItem, removeLane, editLaneTitle }) {
     <div className="lane-container">
       <div className={`Lane ${addLane ? "empty" : ""}`} onClick={handleClick}>
         {isTitleEditing ? (
-          <LaneTitleForm
-            editLaneTitle={editLaneTitle}
+          <TitleForm
+            editTitle={editLaneTitle}
             toggleEdit={toggleEdit}
             title={title}
+            laneId={lane.id}
           />
         ) : (
           <h3 onClick={toggleEdit}>
