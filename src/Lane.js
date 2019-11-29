@@ -1,21 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import "./Lane.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faPlusCircle,
-  // faPlusSquare,
-  // faEdit,
-  faTrash
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import TitleForm from "./TitleForm";
 
-function Lane({ lane, addLane, addItem, removeLane, editLaneTitle }) {
+function Lane({ lane, addItem, removeLane, editLaneTitle }) {
   const { title, items } = lane;
   const [isTitleEditing, toggleTitleEditing] = useState(false);
 
   const toggleEdit = () => toggleTitleEditing(!isTitleEditing);
-  const handleClick = () => (addLane ? addLane("new lane") : null);
   const handleAddItem = e => {
     addItem(lane.id, "new item", "new description");
   };
@@ -23,11 +16,11 @@ function Lane({ lane, addLane, addItem, removeLane, editLaneTitle }) {
     e.stopPropagation();
     removeLane(lane.id);
   };
-  const handleTitleEdit = () => {};
   const tasks = items.map(item => <span key={item.id}>{item.name}</span>);
+
   return (
     <div className="lane-container">
-      <div className={`Lane ${addLane ? "empty" : ""}`} onClick={handleClick}>
+      <div className="Lane">
         {isTitleEditing ? (
           <TitleForm
             editTitle={editLaneTitle}
@@ -37,23 +30,15 @@ function Lane({ lane, addLane, addItem, removeLane, editLaneTitle }) {
           />
         ) : (
           <h3 onClick={toggleEdit}>
-            {addLane && <FontAwesomeIcon icon={faPlusCircle} />}
-            <span onClick={handleTitleEdit}>{title}</span>
-            {!addLane && (
-              <FontAwesomeIcon icon={faTrash} onClick={handleRemoveLane} />
-            )}
+            <span>{title}</span>
+            <FontAwesomeIcon icon={faTrash} onClick={handleRemoveLane} />
           </h3>
         )}
-
-        {!addLane && (
-          <Fragment>
-            {tasks}
-            <span className="add-item" onClick={handleAddItem}>
-              <FontAwesomeIcon icon={faPlus} />
-              <span className="add-item-text">Add item</span>
-            </span>
-          </Fragment>
-        )}
+        {tasks}
+        <span className="add-item" onClick={handleAddItem}>
+          <FontAwesomeIcon icon={faPlus} />
+          <span className="add-item-text">Add item</span>
+        </span>
       </div>
     </div>
   );

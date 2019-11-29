@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Lane from "./Lane";
 import "./SwimLanes.css";
+import AddLaneButton from "./AddLaneButton";
+import TitleForm from "./TitleForm";
 
 export default function SwimLanes({
   lanes,
@@ -9,6 +11,10 @@ export default function SwimLanes({
   removeLane,
   editLaneTitle
 }) {
+  const [isAddTitleEditing, setIsAddTitleEditing] = useState(false);
+  const toggleEdit = () => {
+    setIsAddTitleEditing(!isAddTitleEditing);
+  };
   return (
     <div className="SwimLanes">
       {lanes.map(lane => (
@@ -20,11 +26,15 @@ export default function SwimLanes({
           editLaneTitle={editLaneTitle}
         />
       ))}
-      <Lane
-        lane={{ title: "Add lane", items: [] }}
-        key="last"
-        addLane={addLane}
-      />
+      {!isAddTitleEditing ? (
+        <AddLaneButton toggleEdit={toggleEdit} />
+      ) : (
+        <div className="lane-container">
+          <div className="Lane">
+            <TitleForm addLane={addLane} toggleEdit={toggleEdit} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

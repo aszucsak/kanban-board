@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 
-function TitleForm({ title, editTitle, toggleEdit, laneId }) {
+function TitleForm({ title, editTitle, toggleEdit, laneId, addLane }) {
   const [value, setValue] = useState(title);
   const handleTitleEdit = e => {
     e.preventDefault();
-    if (laneId) {
-      editTitle(laneId, value);
-    } else {
-      editTitle(value);
+    if (value !== "") {
+      if (laneId) {
+        editTitle(laneId, value);
+      } else if (addLane) {
+        addLane(value);
+      } else {
+        editTitle(value);
+      }
+      toggleEdit();
     }
-    toggleEdit();
+    handleCancel();
   };
   const handleChange = e => {
     setValue(e.target.value);
   };
   const handleCancel = () => {
-    setValue(title);
+    if (!addLane) {
+      setValue(title);
+    }
     toggleEdit();
   };
   return (
@@ -26,6 +33,7 @@ function TitleForm({ title, editTitle, toggleEdit, laneId }) {
         value={value}
         onBlur={handleCancel}
         onChange={handleChange}
+        placeholder="Enter Title..."
       />
     </form>
   );
