@@ -105,3 +105,23 @@ span.add-item:hover {
 .add-item-text {
   margin-left: 10px;
 }
+
+.item-details {
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-form-container {
+  background-color: rgb(219, 219, 219);
+  z-index: 6;
+  box-shadow: 2px 2px 15px 2px rgb(0, 0, 0, 0.75);
+}
