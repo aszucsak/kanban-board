@@ -12,7 +12,9 @@ function ItemDetails({ toggleItemDetails, lanes, lane, item }) {
         <h3>Task details</h3>
         <form>
           <div className="label-logo">
-            <FontAwesomeIcon icon={faTag} />
+            <span className="logo">
+              <FontAwesomeIcon icon={faTag} />
+            </span>
             <div className="label-input">
               <label htmlFor="title">Title</label>
               <input
@@ -25,9 +27,11 @@ function ItemDetails({ toggleItemDetails, lanes, lane, item }) {
             </div>
           </div>
           <div className="label-logo">
+            <span className="logo">
+              <FontAwesomeIcon icon={faFileAlt} />
+            </span>
             <div className="label-input">
               <label htmlFor="description">
-                <FontAwesomeIcon icon={faFileAlt} />
                 <span>Description</span>
               </label>
               <textarea
@@ -41,8 +45,14 @@ function ItemDetails({ toggleItemDetails, lanes, lane, item }) {
             </div>
           </div>
           <div className="label-logo">
-            <FontAwesomeIcon icon={faColumns} />
-            Currently in Column: {lane.title}
+            <span className="logo">
+              <FontAwesomeIcon icon={faColumns} />
+            </span>
+            <div>
+              {/* To be modified */}
+              <p>Currently in Column: {lane.title}</p>
+              <p>Move to Column: </p>
+            </div>
           </div>
         </form>
       </div>
