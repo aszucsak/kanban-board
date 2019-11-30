@@ -5,10 +5,11 @@ import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import TitleForm from "./TitleForm";
 import ItemDetails from "./ItemDetails";
 
-function Lane({ lane, addItem, removeLane, editLaneTitle }) {
+function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
   const { title, items } = lane;
   const [isTitleEditing, toggleTitleEditing] = useState(false);
   const [isItemFormOpen, toggleItemFormOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
 
   const toggleEdit = () => toggleTitleEditing(!isTitleEditing);
   const handleAddItem = e => {
@@ -18,11 +19,13 @@ function Lane({ lane, addItem, removeLane, editLaneTitle }) {
     e.stopPropagation();
     removeLane(lane.id);
   };
-  const toggleItemDetails = () => {
+  const toggleItemDetails = item => {
+    setSelectedItem(selectedItem === "" ? item : "");
     toggleItemFormOpen(!isItemFormOpen);
+    console.log(selectedItem.name);
   };
   const tasks = items.map(item => (
-    <span key={item.id} onClick={toggleItemDetails}>
+    <span key={item.id} onClick={() => toggleItemDetails(item)}>
       {item.name}
     </span>
   ));
@@ -51,7 +54,14 @@ function Lane({ lane, addItem, removeLane, editLaneTitle }) {
           </span>
         </div>
       </div>
-      {isItemFormOpen && <ItemDetails toggleItemDetails={toggleItemDetails} />}
+      {isItemFormOpen && (
+        <ItemDetails
+          lanes={lanes}
+          lane={lane}
+          item={selectedItem}
+          toggleItemDetails={toggleItemDetails}
+        />
+      )}
     </Fragment>
   );
 }

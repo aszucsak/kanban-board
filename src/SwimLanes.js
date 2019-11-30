@@ -24,6 +24,7 @@ export default function SwimLanes({
           addItem={addItem}
           removeLane={removeLane}
           editLaneTitle={editLaneTitle}
+          lanes={lanes}
         />
       ))}
       {!isAddTitleEditing ? (
