@@ -172,6 +172,32 @@ span.add-item:hover {
   padding: 4px;
 }
 
+.current-lane {
+  font-weight: 900;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  width: 100%;
+  padding: 0;
+  padding-bottom: 4px;
+}
+
+.buttons input {
+  border: 2px solid rgb(159, 193, 243);
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  background-color: rgb(72, 102, 201);
+  transition: background-color 200ms ease-in-out;
+}
+
+.buttons input:hover {
+  background-color: rgb(81, 133, 211);
+}
+
 .label-input::-ms-clear {
   display: none;
 }
@@ -180,4 +206,14 @@ span.add-item:hover {
   margin-bottom: 0.2em;
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.7);
+}
+
+.label-input p {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+.label-input p select {
+  width: 100%;
+  font-size: 1em;
 }

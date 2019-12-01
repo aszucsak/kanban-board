@@ -22,7 +22,6 @@ function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
   const toggleItemDetails = item => {
     setSelectedItem(selectedItem === "" ? item : "");
     toggleItemFormOpen(!isItemFormOpen);
-    console.log(selectedItem.name);
   };
   const tasks = items.map(item => (
     <span key={item.id} onClick={() => toggleItemDetails(item)}>
