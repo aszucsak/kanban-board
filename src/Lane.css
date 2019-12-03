@@ -195,8 +195,13 @@ span.add-item:hover {
   transition: background-color 200ms ease-in-out;
 }
 
-.buttons input:hover {
+.buttons input:hover,
+.buttons input:disabled {
   background-color: rgb(153, 187, 238);
+}
+
+.buttons input:disabled {
+  color: rgb(202, 202, 202);
 }
 
 .buttons input.delete-button {
@@ -226,4 +231,9 @@ span.add-item:hover {
 .label-input p select {
   width: 100%;
   font-size: 1em;
+}
+
+.alert {
+  text-align: center;
+  color: rgb(204, 46, 46);
 }

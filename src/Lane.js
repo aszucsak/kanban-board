@@ -22,7 +22,7 @@ function Lane({
 
   const toggleEdit = () => toggleTitleEditing(!isTitleEditing);
   const handleAddItem = e => {
-    addItem(lane.id, "new item", "new description"); // To be modified -> the AddItem function should be done through ItemDetails
+    toggleItemDetails({ name: "", description: "" });
   };
   const handleRemoveLane = e => {
     e.stopPropagation();

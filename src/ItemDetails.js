@@ -25,7 +25,11 @@ function ItemDetails({
     itemDescription: item.description,
     laneId: lane.id
   });
+  const [emptyFields, setEmptyField] = useState(
+    item.name === "" ? true : false
+  );
   const handleChange = e => {
+    setEmptyField(!value.itemName || !value.itemDescription ? true : false);
     setValue({
       ...value,
       [e.target.name]:
@@ -34,12 +38,18 @@ function ItemDetails({
   };
   const handleSubmit = e => {
     e.preventDefault();
-    editItem(lane.id, item.id, {
-      name: value.itemName,
-      description: value.itemDescription
-    });
-    if (value.laneId !== lane.id) {
-      moveItem(lane.id, item.id, value.laneId);
+    if (value.itemName && value.itemDescription) {
+      if (item.name === "") {
+        addItem(lane.id, value.itemName, value.itemDescription);
+      } else {
+        editItem(lane.id, item.id, {
+          name: value.itemName,
+          description: value.itemDescription
+        });
+      }
+      if (value.laneId !== lane.id) {
+        moveItem(lane.id, item.id, value.laneId);
+      }
     }
     toggleItemDetails();
   };
@@ -119,16 +129,23 @@ function ItemDetails({
               <FontAwesomeIcon icon={faCheckSquare} />
             </span>
             <div className="buttons">
-              <input type="submit" value="Save values" />
+              <input type="submit" value="Save values" disabled={emptyFields} />
               <input type="button" value="Cancel" onClick={toggleItemDetails} />
-              <input
-                type="button"
-                className="delete-button"
-                value="Delete"
-                onClick={handleRemove}
-              />
+              {item.name && (
+                <input
+                  type="button"
+                  className="delete-button"
+                  value="Delete"
+                  onClick={handleRemove}
+                />
+              )}
             </div>
           </div>
+          {emptyFields ? (
+            <div className="alert">Title and Description must be filled!</div>
+          ) : (
+            <div className="alert">&nbsp;</div>
+          )}
         </form>
       </div>
     </div>
