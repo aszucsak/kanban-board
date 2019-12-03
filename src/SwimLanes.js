@@ -8,8 +8,11 @@ export default function SwimLanes({
   lanes,
   addLane,
   addItem,
+  removeItem,
+  editItem,
   removeLane,
-  editLaneTitle
+  editLane,
+  moveItem
 }) {
   const [isAddTitleEditing, setIsAddTitleEditing] = useState(false);
   const toggleEdit = () => {
@@ -23,8 +26,11 @@ export default function SwimLanes({
           key={lane.id}
           addItem={addItem}
           removeLane={removeLane}
-          editLaneTitle={editLaneTitle}
+          editLane={editLane}
           lanes={lanes}
+          removeItem={removeItem}
+          editItem={editItem}
+          moveItem={moveItem}
         />
       ))}
       {!isAddTitleEditing ? (

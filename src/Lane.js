@@ -5,7 +5,16 @@ import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import TitleForm from "./TitleForm";
 import ItemDetails from "./ItemDetails";
 
-function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
+function Lane({
+  lanes,
+  lane,
+  addItem,
+  removeItem,
+  editItem,
+  removeLane,
+  editLane,
+  moveItem
+}) {
   const { title, items } = lane;
   const [isTitleEditing, toggleTitleEditing] = useState(false);
   const [isItemFormOpen, toggleItemFormOpen] = useState(false);
@@ -13,7 +22,7 @@ function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
 
   const toggleEdit = () => toggleTitleEditing(!isTitleEditing);
   const handleAddItem = e => {
-    addItem(lane.id, "new item", "new description");
+    addItem(lane.id, "new item", "new description"); // To be modified -> the AddItem function should be done through ItemDetails
   };
   const handleRemoveLane = e => {
     e.stopPropagation();
@@ -35,7 +44,7 @@ function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
         <div className="Lane">
           {isTitleEditing ? (
             <TitleForm
-              editTitle={editLaneTitle}
+              editLane={editLane}
               toggleEdit={toggleEdit}
               title={title}
               laneId={lane.id}
@@ -59,6 +68,10 @@ function Lane({ lanes, lane, addItem, removeLane, editLaneTitle }) {
           lane={lane}
           item={selectedItem}
           toggleItemDetails={toggleItemDetails}
+          removeItem={removeItem}
+          editItem={editItem}
+          addItem={addItem}
+          moveItem={moveItem}
         />
       )}
     </Fragment>

@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 
-function TitleForm({ title, editTitle, toggleEdit, laneId, addLane }) {
+function TitleForm({
+  title,
+  editLane,
+  toggleEdit,
+  laneId,
+  addLane,
+  editTitle
+}) {
   const [value, setValue] = useState(title);
   const handleTitleEdit = e => {
     e.preventDefault();
     if (value !== "") {
       if (laneId) {
-        editTitle(laneId, value);
+        editLane(laneId, { title: value });
       } else if (addLane) {
         addLane(value);
       } else {

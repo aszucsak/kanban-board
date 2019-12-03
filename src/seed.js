@@ -26,16 +26,16 @@ export const board = {
       id: 2,
       title: "in progress",
       items: [
-        { id: 1, name: "Seed file", description: "create seed file" },
-        { id: 2, name: "state", description: "add state to component" }
+        { id: 4, name: "Seed file", description: "create seed file" },
+        { id: 5, name: "state", description: "add state to component" }
       ]
     },
     {
       id: 3,
       title: "done",
       items: [
-        { id: 1, name: "design", description: "design board" },
-        { id: 2, name: "navbar", description: "create navbar" }
+        { id: 6, name: "design", description: "design board" },
+        { id: 7, name: "navbar", description: "create navbar" }
       ]
     }
   ]
