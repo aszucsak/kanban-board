@@ -32,8 +32,7 @@ function ItemDetails({
     setEmptyField(!value.itemName || !value.itemDescription ? true : false);
     setValue({
       ...value,
-      [e.target.name]:
-        e.target.name === "laneId" ? +e.target.value : e.target.value
+      [e.target.name]: e.target.value
     });
   };
   const handleSubmit = e => {

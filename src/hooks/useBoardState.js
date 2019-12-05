@@ -69,12 +69,9 @@ export default () => {
       const itemToMove = lanes
         .find(l => l.id === laneId)
         .items.find(i => i.id === itemId);
-      console.log(itemToMove);
       const updatedLanes = lanes.map(lane => {
-        console.log(lane.id, newLaneId, laneId);
         if (lane.id === newLaneId) {
           const newItems = [...lane.items, itemToMove];
-          console.log(newItems);
           return { ...lane, items: newItems };
         }
         if (lane.id === laneId) {
@@ -82,7 +79,51 @@ export default () => {
         }
         return lane;
       });
-      console.log(updatedLanes);
+      updateLanes(updatedLanes);
+    },
+    moveItemToPos: (sourceLaneId, destLaneId, destItemIndex, itemId) => {
+      const sourceColumn = lanes.find(lane => lane.id === sourceLaneId);
+      const sourceColumnIdx = lanes.findIndex(lane => lane.id === sourceLaneId);
+
+      const destinationColumn = lanes.find(lane => lane.id === destLaneId);
+      const destinationColumnIdx = lanes.findIndex(
+        lane => lane.id === destLaneId
+      );
+      const updatedLanes = lanes;
+      const movedItem = sourceColumn.items.find(item => item.id === itemId);
+
+      if (sourceLaneId === destLaneId) {
+        const destCol = {
+          ...destinationColumn,
+          items: destinationColumn.items.filter(i => i.id !== itemId)
+        };
+        const updatedLane = {
+          ...destCol,
+          items: [
+            ...destCol.items.slice(0, destItemIndex),
+            movedItem,
+            ...destCol.items.slice(destItemIndex)
+          ]
+        };
+        updatedLanes[destinationColumnIdx] = updatedLane;
+      } else {
+        const newSourceCol = {
+          ...sourceColumn,
+          items: sourceColumn.items.filter(item => item.id !== itemId)
+        };
+
+        const newDestCol = {
+          ...destinationColumn,
+          items: [
+            ...destinationColumn.items.slice(0, destItemIndex),
+            movedItem,
+            ...destinationColumn.items.slice(destItemIndex)
+          ]
+        };
+        updatedLanes[sourceColumnIdx] = newSourceCol;
+        updatedLanes[destinationColumnIdx] = newDestCol;
+      }
+
       updateLanes(updatedLanes);
     }
   };

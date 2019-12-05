@@ -3,10 +3,10 @@ import "./Board.css";
 import SwimLanes from "./SwimLanes";
 import useBoardState from "./hooks/useBoardState";
 import TitleForm from "./TitleForm";
+import { DragDropContext } from "react-beautiful-dnd";
 
 export default function Board() {
   const [isEditing, setIsEditing] = useState(false);
-  // rewritten using useBoardState hook
   const {
     kanban,
     addLane,
@@ -16,10 +16,30 @@ export default function Board() {
     removeLane,
     editBoardName,
     editLane,
-    moveItem
+    moveItem,
+    moveItemToPos
   } = useBoardState();
   const { title, lanes } = kanban;
   const toggleEdit = () => setIsEditing(!isEditing);
+  const onDragEnd = result => {
+    const { destination, source, draggableId } = result;
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    moveItemToPos(
+      source.droppableId,
+      destination.droppableId,
+      destination.index,
+      draggableId
+    );
+  };
   return (
     <div className="Board">
       <div className="board-title">
@@ -33,16 +53,18 @@ export default function Board() {
           <h1 onClick={toggleEdit}>{title}</h1>
         )}
       </div>
-      <SwimLanes
-        lanes={lanes}
-        addLane={addLane}
-        addItem={addItem}
-        editLane={editLane}
-        removeLane={removeLane}
-        editItem={editItem}
-        removeItem={removeItem}
-        moveItem={moveItem}
-      />
+      <DragDropContext onDragEnd={onDragEnd}>
+        <SwimLanes
+          lanes={lanes}
+          addLane={addLane}
+          addItem={addItem}
+          editLane={editLane}
+          removeLane={removeLane}
+          editItem={editItem}
+          removeItem={removeItem}
+          moveItem={moveItem}
+        />
+      </DragDropContext>
     </div>
   );
 }

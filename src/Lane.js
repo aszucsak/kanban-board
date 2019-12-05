@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import TitleForm from "./TitleForm";
 import ItemDetails from "./ItemDetails";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 function Lane({
   lanes,
@@ -32,10 +33,21 @@ function Lane({
     setSelectedItem(selectedItem === "" ? item : "");
     toggleItemFormOpen(!isItemFormOpen);
   };
-  const tasks = items.map(item => (
-    <span key={item.id} onClick={() => toggleItemDetails(item)}>
-      {item.name}
-    </span>
+  const tasks = items.map((item, index) => (
+    <Draggable draggableId={item.id} index={index} key={item.id}>
+      {provided => (
+        <div
+          className="task"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <span key={item.id} onClick={() => toggleItemDetails(item)}>
+            {item.name}
+          </span>
+        </div>
+      )}
+    </Draggable>
   ));
 
   return (
@@ -55,8 +67,15 @@ function Lane({
               <FontAwesomeIcon icon={faTrash} onClick={handleRemoveLane} />
             </h3>
           )}
-          {tasks}
-          <span className="add-item" onClick={handleAddItem}>
+          <Droppable droppableId={lane.id}>
+            {provided => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {tasks}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+          <span className="add-item task" onClick={handleAddItem}>
             <FontAwesomeIcon icon={faPlus} />
             <span className="add-item-text">Add item</span>
           </span>

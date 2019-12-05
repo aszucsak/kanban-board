@@ -8,7 +8,7 @@ function TitleForm({
   addLane,
   editTitle
 }) {
-  const [value, setValue] = useState(title);
+  const [value, setValue] = useState(title || "");
   const handleTitleEdit = e => {
     e.preventDefault();
     if (value !== "") {
