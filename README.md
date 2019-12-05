@@ -1,68 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Desription
 
-In the project directory, you can run:
+Simple React-based Trello-like kanban board. Tasks can be dragged and dropped from one list to another list or within the same list. I used react-beautiful-dnd for the drag and drop feature.
 
-### `yarn start`
+### Features
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Navbar
+   The navbar does not do anything currently. I am planning to add authentication and authorization to the project. Backend will be made in a simple Node server with MongoDB or in Firebase.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2. Board
+   Currently there is only one Board and new board cannot be added. I am planning to add this feature. Boards will be selectable from the navbar. The boad name can be changed by clicking the title. The title text is replaced with and input field. The form can be submitted by hitting enter. When the input field loses focus (when clicking away or hitting tab) the title update is cancelled and the original text is restored.
 
-### `yarn test`
+3. Lanes
+   Lanes can be renamed, deleted and created. Renaming happens with the same form component as the one used for board title and the new lane form.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Tasks
+   Task are rendered from the Lane component. By clicking an individual task, a modal appears where the name and details of the task appears. You can modify or delete the task from this modal.
+   When one of the fields is empty, the save button is disabled. The Modal can be closed by clicking outside of the modal or by hitting cancel.
+   The task can be moved to the end of another lane by selecting the lane name in the dropdown list.
+   Tasks can be moved using the drag and drop feature. You can drag them to another position in the same list or you can drag them to another lane.
 
-### `yarn build`
+### General Info
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I used functional components and hooks. State management is solved in the individual components. Currently no useContext hooks or Redux is used in this project. I am planning to add Redux.
+The project was fully designed by me. I looked at the Trello website for inspiration but I did not copy any of the styles or specific structure.
+The background is from [SVGbackgrounds.com](https://www.svgbackgrounds.com).
+Icons are from FontAwesome. Imported as an NPM module.
